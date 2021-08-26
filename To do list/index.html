@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="=en">
+    <head>
+        <link rel="stylesheet" href="/fontawesome-free-5.15.4-web/css/all.css" rel="stylesheet">
+        
+        <style media="screen">
+            *{
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+                letter-spacing: 1px;
+                text-transform: capitalize;
+            }
+            body{
+                min-height: 100vh;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background: linear-gradient(45deg, #ff0 50%, #333 50%);
+            }
+            .header{
+                height: 150px;
+                width:100%;
+                text-align: center;
+                padding: 20px;
+                
+            }
+            .header h1{
+                font-size: 120px;
+                color:yellow;
+                text-shadow: -5px 5px 3px #666;
+            }
+            .container
+            {
+                height:450px;
+                width: 330px;
+                background: linear-gradient(45deg, #333 50%, #ff0 50%);
+                border-radius: 20px;
+                box-shadow: -10px 10px 10px #666;
+                padding: 10px;
+                overflow-y: auto;
+                margin: 40px auto;
+            }
+            #input{
+                height: 50px;
+                width: 100%;
+                outline: none;
+                border: none;
+                border-radius: 15px;
+                background: #666;
+                color:#ff0;
+                padding: 0 10px;
+                margin: 5px 0;
+                box-shadow: 5px 5px 8px #666;
+            }
+            #input::placeholder{
+                color: #bbb;
+            }
+            ul li{
+                background: #444;
+                color: #ff0;
+                height: 40px;
+                border-radius: 50px;
+                margin: 10px;
+                padding: 10px;
+                position: relative;
+            }
+             ul .fa-check, .fa-trash{
+                 position: absolute;
+                 cursor: pointer;
+             }
+             ul .fa-check{
+                 right:40px;
+                 color: green;
+             }
+             ul .fa-trash{
+                 right:10px;
+                 color: red;
+             }
+             ul .checked{
+                 background: lightgreen;
+                 color: #333;
+                 text-decoration: line-through;
+                 transition: .8s;
+             }
+             .yourlist{
+                 margin: 10px 0 0 0;
+                 text-align: center;
+                 color: #666;
+                 font-weight: 800;
+             }
+        </style>
+        <script src="/jquery.js" charset="utf-8"></script>
+    </head>
+    <body>
+        <div>
+        <div class="header">
+            <h1>To Do List</h1>
+        </div>
+        <div class="container">
+            <h4 class="enter">Enter To Add Task to your List</h4>
+            <input type = "text" id="input" placeholder="Enter to add task">
+            <h3 class="yourlist">List</h3>
+            <ul></ul>
+        </div>
+    </div>
+        <script type="text/javascript">
+        $(document).ready(function(){
+            $('#input').change(function(){
+                var input = $(this).val();
+                $('ul').append('<li>'+input+'<i class="fas fa-check"></i><i class="fas fa-trash"></i></li>');
+                $(this).val(' ');
+            });
+            $('ul').on('click','.fa-trash',function(){
+                $(this).parent('li').fadeOut(300);
+            });
+            $('ul').on('click','.fa-check',function(){
+                $(this).parent('li').toggleClass('checked');
+            });
+        });
+        </script>
+    </body>
+</html>
